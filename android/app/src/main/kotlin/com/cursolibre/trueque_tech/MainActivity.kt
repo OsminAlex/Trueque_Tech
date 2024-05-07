@@ -1,4 +1,4 @@
-package com.example.trueque_tech
+package com.cursolibre.trueque_tech
 
 import io.flutter.embedding.android.FlutterActivity
 
