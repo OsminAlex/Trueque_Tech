@@ -35,6 +35,8 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.6
   firebase_core: ^2.30.1
+  shared_preferences: ^2.2.3
+  animate_do: ^3.3.4
 
 dev_dependencies:
   #Cambiando package de la app
