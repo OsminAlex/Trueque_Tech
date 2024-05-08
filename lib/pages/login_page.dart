@@ -1,10 +1,20 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 //import 'package:trueque_tech/themes/colors.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:trueque_tech/pages/dash_board_page.dart';
+import 'package:trueque_tech/utils/auth.dart';
+import 'package:trueque_tech/utils/snackbar.dart';
 
 class LoginPage extends StatelessWidget {
   static const String routename = 'Login';
-  const LoginPage({super.key});
+  final GlobalKey<FormBuilderState> _formKey = GlobalKey<FormBuilderState>();
+  //const LoginPage({super.key});
+  final AuthService _auth = AuthService();
+
+  LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -68,8 +78,8 @@ class LoginPage extends StatelessWidget {
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10),
-                                boxShadow: [
-                                  const BoxShadow(
+                                boxShadow: const [
+                                  BoxShadow(
                                       color: Color.fromRGBO(225, 95, 27, .3),
                                       blurRadius: 20,
                                       offset: Offset(0, 10))
@@ -123,7 +133,40 @@ class LoginPage extends StatelessWidget {
                       FadeInUp(
                           duration: const Duration(milliseconds: 1600),
                           child: MaterialButton(
-                            onPressed: () {},
+                            onPressed: () async {
+                              _formKey.currentState?.save();
+                              if (_formKey.currentState?.validate() == true) {
+                                final v = _formKey.currentState?.value;
+                                var result = await _auth.createAcount(
+                                    v?['user'], v?['pass']);
+
+                                // switch (result) {
+                                //   case 1:
+                                //     showSnackBar(context, "Error, password demasiado devil");
+                                //     break;
+                                //   case 2:
+                                //     showSnackBar(
+                                //         context, "Error, email ya en uso");
+                                //     break;
+                                //   case != null:
+                                //     Navigator.popAndPushNamed( context, DashBoardPage.routename);
+                                //   default:
+                                // }
+
+                                if (result == 1) {
+                                  showSnackBar(context,
+                                      "Error, password demasiado debil");
+                                } else if (result == 2) {
+                                  showSnackBar(
+                                      context, "Error, email ya en uso");
+                                } else if (result != null) {
+                                  Navigator.popAndPushNamed(
+                                      context, DashBoardPage.routename);
+                                }
+                              }
+
+                              //showSnackBar(context, "Iniciando sesion...");
+                            },
                             height: 50,
                             // margin: EdgeInsets.symmetric(horizontal: 50),
                             color: Colors.orange[900],

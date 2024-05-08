@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:trueque_tech/firebase_options.dart';
+import 'package:trueque_tech/pages/dash_board_page.dart';
 import 'package:trueque_tech/pages/login_page.dart';
 import 'package:trueque_tech/preferences/pref_users.dart';
 
@@ -21,8 +22,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       initialRoute: prefs.ultimapagina,
-      routes: {LoginPage.routename: (context) => const LoginPage()},
+      routes: {
+        LoginPage.routename: (context) => LoginPage(),
+        DashBoardPage.routename: (context) => const DashBoardPage(),
+      },
     );
   }
 }
