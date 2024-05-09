@@ -84,29 +84,20 @@ class LoginPage extends StatelessWidget {
                                       blurRadius: 20,
                                       offset: Offset(0, 10))
                                 ]),
-                            child: Column(
-                              children: <Widget>[
-                                Container(
-                                  padding: const EdgeInsets.all(10),
-                                  decoration: BoxDecoration(
-                                      border: Border(
-                                          bottom: BorderSide(
-                                              color: Colors.grey.shade200))),
-                                  child: const TextField(
+                            child: FormBuilder(
+                              key: _formKey,
+                              child: Column(
+                                children: <Widget>[
+                                  FormBuilderTextField(
+                                    name: 'user',
                                     decoration: InputDecoration(
                                         hintText: "Email or Phone number",
                                         hintStyle:
                                             TextStyle(color: Colors.grey),
                                         border: InputBorder.none),
                                   ),
-                                ),
-                                Container(
-                                  padding: const EdgeInsets.all(10),
-                                  decoration: BoxDecoration(
-                                      border: Border(
-                                          bottom: BorderSide(
-                                              color: Colors.grey.shade200))),
-                                  child: const TextField(
+                                  FormBuilderTextField(
+                                    name: 'pass',
                                     obscureText: true,
                                     decoration: InputDecoration(
                                         hintText: "Password",
@@ -114,8 +105,8 @@ class LoginPage extends StatelessWidget {
                                             TextStyle(color: Colors.grey),
                                         border: InputBorder.none),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           )),
                       const SizedBox(
@@ -137,8 +128,25 @@ class LoginPage extends StatelessWidget {
                               _formKey.currentState?.save();
                               if (_formKey.currentState?.validate() == true) {
                                 final v = _formKey.currentState?.value;
-                                var result = await _auth.createAcount(
-                                    v?['user'], v?['pass']);
+                                if (v?['user'] != null && v?['pass'] != null) {
+                                  var result = await _auth.createAcount(
+                                      v?['user'], v?['pass']);
+                                  // El resto de tu código...
+
+                                  if (result == 1) {
+                                    showSnackBar(context,
+                                        "Error, password demasiado debil");
+                                  } else if (result == 2) {
+                                    showSnackBar(
+                                        context, "Error, email ya en uso");
+                                  } else if (result != null) {
+                                    Navigator.popAndPushNamed(
+                                        context, DashBoardPage.routename);
+                                  }
+                                } else {
+                                  print(
+                                      'Los campos de usuario y contraseña no pueden ser nulos');
+                                }
 
                                 // switch (result) {
                                 //   case 1:
@@ -152,17 +160,6 @@ class LoginPage extends StatelessWidget {
                                 //     Navigator.popAndPushNamed( context, DashBoardPage.routename);
                                 //   default:
                                 // }
-
-                                if (result == 1) {
-                                  showSnackBar(context,
-                                      "Error, password demasiado debil");
-                                } else if (result == 2) {
-                                  showSnackBar(
-                                      context, "Error, email ya en uso");
-                                } else if (result != null) {
-                                  Navigator.popAndPushNamed(
-                                      context, DashBoardPage.routename);
-                                }
                               }
 
                               //showSnackBar(context, "Iniciando sesion...");
