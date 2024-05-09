@@ -90,7 +90,7 @@ class LoginPage extends StatelessWidget {
                                 children: <Widget>[
                                   FormBuilderTextField(
                                     name: 'user',
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                         hintText: "Email or Phone number",
                                         hintStyle:
                                             TextStyle(color: Colors.grey),
@@ -99,7 +99,7 @@ class LoginPage extends StatelessWidget {
                                   FormBuilderTextField(
                                     name: 'pass',
                                     obscureText: true,
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                         hintText: "Password",
                                         hintStyle:
                                             TextStyle(color: Colors.grey),
