@@ -11,7 +11,11 @@ class AppColors {
   static const sinDefinir04 = Color(0xff1BA6EC);
 
   //Pensado para usarse en botones y cosas a destacar en la app
-  static const botonesApp = Color(0xff1C2D8C);
+  static const BotonesApp = Color(0xff2f4dd3);
+
+  static const color1 = Color(0xff3e21a7);
+  static const color2 = Color(0xff1c2d8c);
+  static const color3 = Color(0xff1b3bce);
 
   const AppColors();
 }
