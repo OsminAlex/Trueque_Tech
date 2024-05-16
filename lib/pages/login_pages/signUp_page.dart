@@ -1,7 +1,5 @@
-// ignore_for_file: use_build_context_synchronously
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:trueque_tech/pages/login_pages/signUp_page.dart';
 import 'package:trueque_tech/themes/colors.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -10,13 +8,13 @@ import 'package:trueque_tech/utils/auth.dart';
 import 'package:trueque_tech/utils/snackbar.dart';
 import 'package:trueque_tech/utils/strings.dart';
 
-class LoginPage extends StatelessWidget {
-  static const String routename = 'Login';
+class SignUp extends StatelessWidget {
+  static const String routename = 'SingUp';
   final GlobalKey<FormBuilderState> _formKey = GlobalKey<FormBuilderState>();
   //const LoginPage({super.key});
   final AuthService _auth = AuthService();
 
-  LoginPage({super.key});
+  SignUp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +42,7 @@ class LoginPage extends StatelessWidget {
                   FadeInUp(
                       duration: const Duration(milliseconds: 1000),
                       child: const Text(
-                        AppStrings.iniciarSesion,
+                        AppStrings.crearCuenta,
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 40,
@@ -56,7 +54,7 @@ class LoginPage extends StatelessWidget {
                   FadeInUp(
                       duration: const Duration(milliseconds: 1300),
                       child: const Text(
-                        AppStrings.bienvenido,
+                        AppStrings.saludoInicial,
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 18,
@@ -245,32 +243,6 @@ class LoginPage extends StatelessWidget {
                                 )),
                           ),
                         ],
-                      ),
-                      const SizedBox(
-                        height: 50,
-                      ),
-                      FadeInUp(
-                          duration: const Duration(milliseconds: 1700),
-                          child: const Text(
-                            AppStrings.toSignUpMessage,
-                            style: TextStyle(color: Colors.grey),
-                          )),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      FadeInUp(
-                        duration: const Duration(milliseconds: 1700),
-                        child: TextButton(
-                            onPressed: () {
-                              Navigator.pushNamed(context, SignUp.routename);
-                            },
-                            child: const Text(
-                              AppStrings.toSignUp,
-                              style: TextStyle(
-                                  color: AppColors.color1,
-                                  fontWeight: FontWeight.bold,
-                                  fontStyle: FontStyle.italic),
-                            )),
                       ),
                     ],
                   ),
