@@ -1,7 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
-//import 'package:trueque_tech/themes/colors.dart';
+import 'package:trueque_tech/themes/colors.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:trueque_tech/pages/dash_board_page.dart';
@@ -24,9 +24,9 @@ class LoginPage extends StatelessWidget {
         width: double.infinity,
         decoration: BoxDecoration(
             gradient: LinearGradient(begin: Alignment.topCenter, colors: [
-          Colors.orange.shade900,
-          Colors.orange.shade800,
-          Colors.orange.shade400
+          AppColors.color2,
+          AppColors.color3,
+          AppColors.color1
         ])),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -90,7 +90,7 @@ class LoginPage extends StatelessWidget {
                                 children: <Widget>[
                                   FormBuilderTextField(
                                     name: 'user',
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                         hintText: "Email or Phone number",
                                         hintStyle:
                                             TextStyle(color: Colors.grey),
@@ -99,7 +99,7 @@ class LoginPage extends StatelessWidget {
                                   FormBuilderTextField(
                                     name: 'pass',
                                     obscureText: true,
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                         hintText: "Password",
                                         hintStyle:
                                             TextStyle(color: Colors.grey),
@@ -166,7 +166,7 @@ class LoginPage extends StatelessWidget {
                             },
                             height: 50,
                             // margin: EdgeInsets.symmetric(horizontal: 50),
-                            color: Colors.orange[900],
+                            color: AppColors.BotonesApp,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(50),
                             ),
