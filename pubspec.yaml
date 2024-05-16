@@ -43,6 +43,7 @@ dependencies:
   form_builder_validators: ^9.1.0
   flutter_native_splash: ^2.4.0
   google_nav_bar: ^5.0.6
+  flutter_svg: ^2.0.10+1
 
 dev_dependencies:
   #Cambiando package de la app

@@ -1,12 +1,13 @@
 // ignore_for_file: use_build_context_synchronously
-
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:trueque_tech/themes/colors.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:trueque_tech/pages/dash_board_page.dart';
 import 'package:trueque_tech/utils/auth.dart';
 import 'package:trueque_tech/utils/snackbar.dart';
+import 'package:trueque_tech/utils/strings.dart';
 
 class LoginPage extends StatelessWidget {
   static const String routename = 'Login';
@@ -42,8 +43,11 @@ class LoginPage extends StatelessWidget {
                   FadeInUp(
                       duration: const Duration(milliseconds: 1000),
                       child: const Text(
-                        "Login",
-                        style: TextStyle(color: Colors.white, fontSize: 40),
+                        AppStrings.iniciarSesion,
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold),
                       )),
                   const SizedBox(
                     height: 10,
@@ -51,8 +55,11 @@ class LoginPage extends StatelessWidget {
                   FadeInUp(
                       duration: const Duration(milliseconds: 1300),
                       child: const Text(
-                        "Welcome Back",
-                        style: TextStyle(color: Colors.white, fontSize: 18),
+                        AppStrings.bienvenido,
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontStyle: FontStyle.italic),
                       )),
                 ],
               ),
@@ -80,9 +87,9 @@ class LoginPage extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10),
                                 boxShadow: const [
                                   BoxShadow(
-                                      color: Color.fromRGBO(225, 95, 27, .3),
-                                      blurRadius: 20,
-                                      offset: Offset(0, 10))
+                                      color: Colors.grey,
+                                      blurRadius: 5,
+                                      offset: Offset(0, 3))
                                 ]),
                             child: FormBuilder(
                               key: _formKey,
@@ -91,7 +98,8 @@ class LoginPage extends StatelessWidget {
                                   FormBuilderTextField(
                                     name: 'user',
                                     decoration: const InputDecoration(
-                                        hintText: "Email or Phone number",
+                                        contentPadding: EdgeInsets.all(20),
+                                        hintText: AppStrings.hintEmail,
                                         hintStyle:
                                             TextStyle(color: Colors.grey),
                                         border: InputBorder.none),
@@ -100,7 +108,8 @@ class LoginPage extends StatelessWidget {
                                     name: 'pass',
                                     obscureText: true,
                                     decoration: const InputDecoration(
-                                        hintText: "Password",
+                                        contentPadding: EdgeInsets.all(20),
+                                        hintText: AppStrings.hintPassword,
                                         hintStyle:
                                             TextStyle(color: Colors.grey),
                                         border: InputBorder.none),
@@ -174,7 +183,7 @@ class LoginPage extends StatelessWidget {
                             // ),
                             child: const Center(
                               child: Text(
-                                "Login",
+                                AppStrings.login,
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold),
@@ -187,7 +196,7 @@ class LoginPage extends StatelessWidget {
                       FadeInUp(
                           duration: const Duration(milliseconds: 1700),
                           child: const Text(
-                            "Continue with social media",
+                            AppStrings.loginMethods,
                             style: TextStyle(color: Colors.grey),
                           )),
                       const SizedBox(
@@ -201,18 +210,25 @@ class LoginPage extends StatelessWidget {
                                 child: MaterialButton(
                                   onPressed: () {},
                                   height: 50,
-                                  color: Colors.blue,
+                                  color: Colors.white,
                                   shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(50),
+                                    borderRadius: BorderRadius.circular(10),
                                   ),
-                                  child: const Center(
-                                    child: Text(
-                                      "Facebook",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold),
+                                  child: Center(
+                                    child: SvgPicture.asset(
+                                      "assets/facebook.svg",
+                                      width: 32,
+                                      height: 32,
                                     ),
                                   ),
+                                  // child: const Center(
+                                  //   child: Text(
+                                  //     AppStrings.FacebookLogin,
+                                  //     style: TextStyle(
+                                  //         color: Colors.white,
+                                  //         fontWeight: FontWeight.bold),
+                                  //   ),
+                                  // ),
                                 )),
                           ),
                           const SizedBox(
@@ -225,17 +241,24 @@ class LoginPage extends StatelessWidget {
                                   onPressed: () {},
                                   height: 50,
                                   shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(50),
+                                    borderRadius: BorderRadius.circular(10),
                                   ),
-                                  color: Colors.black,
-                                  child: const Center(
-                                    child: Text(
-                                      "Github",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold),
+                                  color: Colors.white,
+                                  child: Center(
+                                    child: SvgPicture.asset(
+                                      "assets/google.svg",
+                                      width: 32,
+                                      height: 32,
                                     ),
                                   ),
+                                  // child: const Center(
+                                  //   child: Text(
+                                  //     AppStrings.GoogleLogin,
+                                  //     style: TextStyle(
+                                  //         color: Colors.white,
+                                  //         fontWeight: FontWeight.bold),
+                                  //   ),
+                                  // ),
                                 )),
                           )
                         ],
