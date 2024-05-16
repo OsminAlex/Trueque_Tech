@@ -131,14 +131,14 @@ class LoginPage extends StatelessWidget {
                                 if (v?['user'] != null && v?['pass'] != null) {
                                   var result = await _auth.createAcount(
                                       v?['user'], v?['pass']);
-                                  // El resto de tu código... 
+                                  // El resto de tu código...
 
                                   if (result == 1) {
                                     showSnackBar(context,
-                                        "Error, password demasiado debil");
+                                        "La contraseña es demasiado debil");
                                   } else if (result == 2) {
                                     showSnackBar(
-                                        context, "Error, email ya en uso");
+                                        context, "El email ya está en uso");
                                   } else if (result != null) {
                                     Navigator.popAndPushNamed(
                                         context, DashBoardPage.routename);

@@ -31,6 +31,7 @@ class _DashBoardPageState extends State<DashBoardPage> {
         backgroundColor: AppColors.sinDefinir04.withOpacity(0.2),
         iconSize: 25,
         gap: 8,
+        haptic: false,
         padding: EdgeInsets.all(18),
         tabs: [
           GButton(
