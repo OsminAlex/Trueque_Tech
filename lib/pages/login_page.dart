@@ -131,7 +131,7 @@ class LoginPage extends StatelessWidget {
                                 if (v?['user'] != null && v?['pass'] != null) {
                                   var result = await _auth.createAcount(
                                       v?['user'], v?['pass']);
-                                  // El resto de tu código...
+                                  // El resto de tu código... 
 
                                   if (result == 1) {
                                     showSnackBar(context,
