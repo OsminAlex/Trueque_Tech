@@ -5,12 +5,11 @@ import 'bottom_navigation/custom_bottom_navigation_bar.dart';
 import 'bottom_navigation/global_variable.dart';
 
 class DashboardPage extends StatelessWidget {
-  DashboardPage({Key? key})
-      : super(key: key); // Corrección en la definición del constructor
+  DashboardPage({Key? key}) : super(key: key);
   final BottomNavigationViewModel viewModel =
       Get.put(BottomNavigationViewModel());
 
-  static const String routename = 'Dashboard'; // Propiedad routename agregada
+  static const String routename = 'Dashboard';
 
   @override
   Widget build(BuildContext context) {

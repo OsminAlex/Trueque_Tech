@@ -69,14 +69,19 @@ class ProfileView extends StatelessWidget {
                         alignment: Alignment.topCenter,
                         child: CircleAvatar(
                           radius: 70,
-                          backgroundImage: AssetImage('assets/user_avatar.jpg'),
+                          backgroundImage: AssetImage('assets/profile.jpg'),
                         ),
                       ),
                       SizedBox(height: 10),
                       Text(
-                        'Gal Gadot',
+                        'Jhon Smith',
                         style: TextStyle(
                             fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        'user@example.com',
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.normal),
                       ),
                       SizedBox(height: 40),
                       _buildIconButton(Icons.info, 'Información Personal'),
