@@ -60,7 +60,8 @@ class ProfileView extends StatelessWidget {
                         alignment: Alignment.topCenter,
                         child: CircleAvatar(
                           radius: 70,
-                          backgroundImage: AssetImage('assets/profile.jpg'),
+                          backgroundImage:
+                              AssetImage('assets/arthurmorgan.jpg'),
                         ),
                       ),
                       SizedBox(height: 10),
