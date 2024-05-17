@@ -33,7 +33,7 @@ class CustomGNavBar extends StatelessWidget {
             ),
             GButton(
               icon: Icons.chat_outlined,
-              text: 'Chat',
+              text: 'Message',
             ),
             GButton(
               icon: Icons.person_2_outlined,

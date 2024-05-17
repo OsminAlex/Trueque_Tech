@@ -7,7 +7,7 @@ class ChatView extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('ChatView', style: TextStyle(fontSize: 24)),
+          Text('MessageView', style: TextStyle(fontSize: 24)),
           SizedBox(height: 20),
         ],
       ),
