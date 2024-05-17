@@ -1,7 +1,4 @@
-// ignore_for_file: use_build_context_synchronously
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:trueque_tech/pages/login_pages/signUp_page.dart';
 import 'package:trueque_tech/themes/colors.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -10,13 +7,13 @@ import 'package:trueque_tech/utils/auth.dart';
 import 'package:trueque_tech/utils/snackbar.dart';
 import 'package:trueque_tech/utils/strings.dart';
 
-class LoginPage extends StatelessWidget {
-  static const String routename = 'Login';
+class SignUp extends StatelessWidget {
+  static const String routename = 'SingUp';
   final GlobalKey<FormBuilderState> _formKey = GlobalKey<FormBuilderState>();
   //const LoginPage({super.key});
   final AuthService _auth = AuthService();
 
-  LoginPage({super.key});
+  SignUp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +23,9 @@ class LoginPage extends StatelessWidget {
         width: double.infinity,
         decoration: BoxDecoration(
             gradient: LinearGradient(begin: Alignment.topCenter, colors: [
-          AppColors.color2,
+          AppColors.sinDefinir01,
           AppColors.color3,
-          AppColors.color1
+          AppColors.sinDefinir04
         ])),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,7 +41,7 @@ class LoginPage extends StatelessWidget {
                   FadeInUp(
                       duration: const Duration(milliseconds: 1000),
                       child: const Text(
-                        AppStrings.iniciarSesion,
+                        AppStrings.crearCuenta,
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 40,
@@ -56,7 +53,7 @@ class LoginPage extends StatelessWidget {
                   FadeInUp(
                       duration: const Duration(milliseconds: 1300),
                       child: const Text(
-                        AppStrings.bienvenido,
+                        AppStrings.saludoInicial,
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 18,
@@ -119,15 +116,18 @@ class LoginPage extends StatelessWidget {
                               ),
                             ),
                           )),
-                      const SizedBox(
-                        height: 40,
-                      ),
-                      FadeInUp(
-                          duration: const Duration(milliseconds: 1500),
-                          child: const Text(
-                            "Forgot Password?",
-                            style: TextStyle(color: Colors.grey),
-                          )),
+
+/***************************************************************************** */
+                      // const SizedBox(
+                      //   height: 40,
+                      // ),
+                      // FadeInUp(
+                      //     duration: const Duration(milliseconds: 1500),
+                      //     child: const Text(
+                      //       "Forgot Password?",
+                      //       style: TextStyle(color: Colors.grey),
+                      //     )),
+/***************************************************************************** */
                       const SizedBox(
                         height: 40,
                       ),
@@ -139,19 +139,18 @@ class LoginPage extends StatelessWidget {
                               if (_formKey.currentState?.validate() == true) {
                                 final v = _formKey.currentState?.value;
                                 if (v?['user'] != null && v?['pass'] != null) {
-                                  var result =
-                                      await _auth.singInEmailAnsPassword(
-                                          v?['user'], v?['pass']);
+                                  var result = await _auth.createAcount(
+                                      v?['user'], v?['pass']);
 
                                   //Una pequeña validacion
                                   switch (result) {
                                     case 1:
                                       showSnackBar(
-                                          context, AppStrings.userOrEmailFail);
+                                          context, AppStrings.passwordToWeak);
                                       break;
                                     case 2:
-                                      showSnackBar(
-                                          context, AppStrings.userOrEmailFail);
+                                      showSnackBar(context,
+                                          AppStrings.emailAlreadyInUse);
                                       break;
                                     case != null:
                                       Navigator.popAndPushNamed(
@@ -180,99 +179,78 @@ class LoginPage extends StatelessWidget {
                               ),
                             ),
                           )),
-                      const SizedBox(
-                        height: 50,
-                      ),
-                      FadeInUp(
-                          duration: const Duration(milliseconds: 1700),
-                          child: const Text(
-                            AppStrings.loginMethods,
-                            style: TextStyle(color: Colors.grey),
-                          )),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      Row(
-                        children: <Widget>[
-                          Expanded(
-                            child: FadeInUp(
-                                duration: const Duration(milliseconds: 1800),
-                                child: MaterialButton(
-                                  onPressed: () {},
-                                  height: 50,
-                                  color: Colors.white,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      SvgPicture.asset(
-                                        "assets/facebook.svg",
-                                        width: 32,
-                                        height: 32,
-                                      ),
-                                      SizedBox(width: 10),
-                                      Text(AppStrings.FacebookLogin),
-                                    ],
-                                  ),
-                                )),
-                          ),
-                          const SizedBox(
-                            width: 30,
-                          ),
-                          Expanded(
-                            child: FadeInUp(
-                                duration: const Duration(milliseconds: 1900),
-                                child: MaterialButton(
-                                  onPressed: () {},
-                                  height: 50,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  color: Colors.white,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      SvgPicture.asset(
-                                        "assets/google.svg",
-                                        width: 32,
-                                        height: 32,
-                                      ),
-                                      SizedBox(width: 10),
-                                      Text(AppStrings.GoogleLogin),
-                                    ],
-                                  ),
-                                )),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 50,
-                      ),
-                      FadeInUp(
-                          duration: const Duration(milliseconds: 1700),
-                          child: const Text(
-                            AppStrings.toSignUpMessage,
-                            style: TextStyle(color: Colors.grey),
-                          )),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      FadeInUp(
-                        duration: const Duration(milliseconds: 1700),
-                        child: TextButton(
-                            onPressed: () {
-                              Navigator.pushNamed(context, SignUp.routename);
-                            },
-                            child: const Text(
-                              AppStrings.toSignUp,
-                              style: TextStyle(
-                                  color: AppColors.color1,
-                                  fontWeight: FontWeight.bold,
-                                  fontStyle: FontStyle.italic),
-                            )),
-                      ),
+
+/******************************************************************************************************/
+
+                      // const SizedBox(
+                      //   height: 50,
+                      // ),
+                      // FadeInUp(
+                      //     duration: const Duration(milliseconds: 1700),
+                      //     child: const Text(
+                      //       AppStrings.loginMethods,
+                      //       style: TextStyle(color: Colors.grey),
+                      //     )),
+
+                      // const SizedBox(
+                      //   height: 30,
+                      // ),
+                      // Row(
+                      //   children: <Widget>[
+                      //     Expanded(
+                      //       child: FadeInUp(
+                      //           duration: const Duration(milliseconds: 1800),
+                      //           child: MaterialButton(
+                      //             onPressed: () {},
+                      //             height: 50,
+                      //             color: Colors.white,
+                      //             shape: RoundedRectangleBorder(
+                      //               borderRadius: BorderRadius.circular(10),
+                      //             ),
+                      //             child: Row(
+                      //               mainAxisAlignment: MainAxisAlignment.center,
+                      //               children: <Widget>[
+                      //                 SvgPicture.asset(
+                      //                   "assets/facebook.svg",
+                      //                   width: 32,
+                      //                   height: 32,
+                      //                 ),
+                      //                 SizedBox(width: 10),
+                      //                 Text(AppStrings.FacebookLogin),
+                      //               ],
+                      //             ),
+                      //           )),
+                      //     ),
+                      //     const SizedBox(
+                      //       width: 30,
+                      //     ),
+                      //     Expanded(
+                      //       child: FadeInUp(
+                      //           duration: const Duration(milliseconds: 1900),
+                      //           child: MaterialButton(
+                      //             onPressed: () {},
+                      //             height: 50,
+                      //             shape: RoundedRectangleBorder(
+                      //               borderRadius: BorderRadius.circular(10),
+                      //             ),
+                      //             color: Colors.white,
+                      //             child: Row(
+                      //               mainAxisAlignment: MainAxisAlignment.center,
+                      //               children: <Widget>[
+                      //                 SvgPicture.asset(
+                      //                   "assets/google.svg",
+                      //                   width: 32,
+                      //                   height: 32,
+                      //                 ),
+                      //                 SizedBox(width: 10),
+                      //                 Text(AppStrings.GoogleLogin),
+                      //               ],
+                      //             ),
+                      //           )),
+                      //     ),
+                      //   ],
+                      // ),
+/*****************************************************************************************************************/
                     ],
                   ),
                 ),

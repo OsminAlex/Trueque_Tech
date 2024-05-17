@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:trueque_tech/firebase_options.dart';
 import 'package:trueque_tech/pages/dash_board_page.dart';
 import 'package:trueque_tech/pages/login_page.dart';
+import 'package:trueque_tech/pages/login_pages/signUp_page.dart';
 import 'package:trueque_tech/preferences/pref_users.dart';
 import 'package:trueque_tech/pages/shop_list.dart';
 import 'package:trueque_tech/pages/favorite_page.dart';
@@ -30,7 +31,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: prefs.ultimapagina,
       routes: {
+        //Paginas SignIn y SingUp, osea el login
         LoginPage.routename: (context) => LoginPage(),
+        SignUp.routename: (context) => SignUp(),
+
+        //Dashbiard pages
         DashBoardPage.routename: (context) => const DashBoardPage(),
         FavoritePage.routename: (context) => const FavoritePage(),
         ProfilePage.routename: (context) => const ProfilePage(),

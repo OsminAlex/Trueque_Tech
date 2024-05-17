@@ -28,8 +28,6 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  
-  
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.6
@@ -43,6 +41,7 @@ dependencies:
   form_builder_validators: ^9.1.0
   flutter_native_splash: ^2.4.0
   google_nav_bar: ^5.0.6
+  flutter_svg: ^2.0.10+1
 
 dev_dependencies:
   #Cambiando package de la app
@@ -51,7 +50,6 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-
 flutter_native_splash:
   image: "assets/imgsplash.png"
   color: "#2f4dd3"
@@ -59,7 +57,7 @@ flutter_native_splash:
   android_12:
     image: "assets/imgsplash.png"
     color: "#2f4dd3"
-    
+
 flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
