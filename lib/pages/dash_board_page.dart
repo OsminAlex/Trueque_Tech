@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:trueque_tech/pages/bottom_navigation/bottom_navigation_viewmodel.dart';
 import 'bottom_navigation/custom_bottom_navigation_bar.dart';
 import 'bottom_navigation/global_variable.dart';
+import 'bottom_navigation/custom_g_nav_bar.dart';
 
 class DashboardPage extends StatelessWidget {
   DashboardPage({Key? key}) : super(key: key);
@@ -11,7 +12,7 @@ class DashboardPage extends StatelessWidget {
 
   static const String routename = 'Dashboard';
 
-  @override
+  /*@override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
@@ -22,6 +23,20 @@ class DashboardPage extends StatelessWidget {
               viewModel.selectView(GlobalVariable.selectedIndex.value, context),
         ),
         bottomNavigationBar: CustomBottomNavigationBar(),
+      ),
+    );
+  }*/
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        extendBody: true,
+        body: Obx(
+          () =>
+              viewModel.selectView(GlobalVariable.selectedIndex.value, context),
+        ),
+        bottomNavigationBar: CustomGNavBar(),
       ),
     );
   }

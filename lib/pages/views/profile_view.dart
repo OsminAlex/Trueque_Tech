@@ -21,15 +21,6 @@ class ProfileView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             SizedBox(height: 40),
-            // Padding(
-            //   padding: const EdgeInsets.only(left: 10),
-            //   child: IconButton(
-            //     icon: Icon(Icons.arrow_back, color: Colors.white),
-            //     onPressed: () {
-            //       Navigator.pop(context);
-            //     },
-            //   ),
-            // ),
             SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.all(10),
@@ -74,7 +65,7 @@ class ProfileView extends StatelessWidget {
                       ),
                       SizedBox(height: 10),
                       Text(
-                        'Jhon Smith',
+                        'Arthur Morgan',
                         style: TextStyle(
                             fontSize: 20, fontWeight: FontWeight.bold),
                       ),
