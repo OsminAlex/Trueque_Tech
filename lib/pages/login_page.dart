@@ -139,18 +139,19 @@ class LoginPage extends StatelessWidget {
                               if (_formKey.currentState?.validate() == true) {
                                 final v = _formKey.currentState?.value;
                                 if (v?['user'] != null && v?['pass'] != null) {
-                                  var result = await _auth.createAcount(
-                                      v?['user'], v?['pass']);
+                                  var result =
+                                      await _auth.singInEmailAnsPassword(
+                                          v?['user'], v?['pass']);
 
                                   //Una pequeña validacion
                                   switch (result) {
                                     case 1:
                                       showSnackBar(
-                                          context, AppStrings.passwordToWeak);
+                                          context, AppStrings.userOrEmailFail);
                                       break;
                                     case 2:
-                                      showSnackBar(context,
-                                          AppStrings.emailAlreadyInUse);
+                                      showSnackBar(
+                                          context, AppStrings.userOrEmailFail);
                                       break;
                                     case != null:
                                       Navigator.popAndPushNamed(

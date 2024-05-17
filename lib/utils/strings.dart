@@ -28,4 +28,5 @@ class AppStrings {
   static const passwordToWeak = "La contraseña es demasiado debil";
   static const formNotNull =
       "Los campos de usuario y contraseña no pueden ser nulos";
+  static const userOrEmailFail = "Usuario o contraseña incorrecto";
 }

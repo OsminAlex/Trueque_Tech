@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:trueque_tech/pages/favorite_page.dart';
 import 'package:trueque_tech/pages/login_page.dart';
@@ -97,7 +98,8 @@ class ProfilePage extends StatelessWidget {
                       }),
                       SizedBox(height: 20),
                       _buildIconButton(Icons.exit_to_app, 'Cerrar Sesión',
-                          onTap: () {
+                          onTap: () async {
+                        await FirebaseAuth.instance.signOut();
                         Navigator.popAndPushNamed(context, LoginPage.routename);
                       }),
                     ],

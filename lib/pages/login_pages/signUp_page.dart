@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:trueque_tech/themes/colors.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -24,9 +23,9 @@ class SignUp extends StatelessWidget {
         width: double.infinity,
         decoration: BoxDecoration(
             gradient: LinearGradient(begin: Alignment.topCenter, colors: [
-          AppColors.color2,
+          AppColors.sinDefinir01,
           AppColors.color3,
-          AppColors.color1
+          AppColors.sinDefinir04
         ])),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -117,15 +116,18 @@ class SignUp extends StatelessWidget {
                               ),
                             ),
                           )),
-                      const SizedBox(
-                        height: 40,
-                      ),
-                      FadeInUp(
-                          duration: const Duration(milliseconds: 1500),
-                          child: const Text(
-                            "Forgot Password?",
-                            style: TextStyle(color: Colors.grey),
-                          )),
+
+/***************************************************************************** */
+                      // const SizedBox(
+                      //   height: 40,
+                      // ),
+                      // FadeInUp(
+                      //     duration: const Duration(milliseconds: 1500),
+                      //     child: const Text(
+                      //       "Forgot Password?",
+                      //       style: TextStyle(color: Colors.grey),
+                      //     )),
+/***************************************************************************** */
                       const SizedBox(
                         height: 40,
                       ),
@@ -177,73 +179,78 @@ class SignUp extends StatelessWidget {
                               ),
                             ),
                           )),
-                      const SizedBox(
-                        height: 50,
-                      ),
-                      FadeInUp(
-                          duration: const Duration(milliseconds: 1700),
-                          child: const Text(
-                            AppStrings.loginMethods,
-                            style: TextStyle(color: Colors.grey),
-                          )),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      Row(
-                        children: <Widget>[
-                          Expanded(
-                            child: FadeInUp(
-                                duration: const Duration(milliseconds: 1800),
-                                child: MaterialButton(
-                                  onPressed: () {},
-                                  height: 50,
-                                  color: Colors.white,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      SvgPicture.asset(
-                                        "assets/facebook.svg",
-                                        width: 32,
-                                        height: 32,
-                                      ),
-                                      SizedBox(width: 10),
-                                      Text(AppStrings.FacebookLogin),
-                                    ],
-                                  ),
-                                )),
-                          ),
-                          const SizedBox(
-                            width: 30,
-                          ),
-                          Expanded(
-                            child: FadeInUp(
-                                duration: const Duration(milliseconds: 1900),
-                                child: MaterialButton(
-                                  onPressed: () {},
-                                  height: 50,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  color: Colors.white,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      SvgPicture.asset(
-                                        "assets/google.svg",
-                                        width: 32,
-                                        height: 32,
-                                      ),
-                                      SizedBox(width: 10),
-                                      Text(AppStrings.GoogleLogin),
-                                    ],
-                                  ),
-                                )),
-                          ),
-                        ],
-                      ),
+
+/******************************************************************************************************/
+
+                      // const SizedBox(
+                      //   height: 50,
+                      // ),
+                      // FadeInUp(
+                      //     duration: const Duration(milliseconds: 1700),
+                      //     child: const Text(
+                      //       AppStrings.loginMethods,
+                      //       style: TextStyle(color: Colors.grey),
+                      //     )),
+
+                      // const SizedBox(
+                      //   height: 30,
+                      // ),
+                      // Row(
+                      //   children: <Widget>[
+                      //     Expanded(
+                      //       child: FadeInUp(
+                      //           duration: const Duration(milliseconds: 1800),
+                      //           child: MaterialButton(
+                      //             onPressed: () {},
+                      //             height: 50,
+                      //             color: Colors.white,
+                      //             shape: RoundedRectangleBorder(
+                      //               borderRadius: BorderRadius.circular(10),
+                      //             ),
+                      //             child: Row(
+                      //               mainAxisAlignment: MainAxisAlignment.center,
+                      //               children: <Widget>[
+                      //                 SvgPicture.asset(
+                      //                   "assets/facebook.svg",
+                      //                   width: 32,
+                      //                   height: 32,
+                      //                 ),
+                      //                 SizedBox(width: 10),
+                      //                 Text(AppStrings.FacebookLogin),
+                      //               ],
+                      //             ),
+                      //           )),
+                      //     ),
+                      //     const SizedBox(
+                      //       width: 30,
+                      //     ),
+                      //     Expanded(
+                      //       child: FadeInUp(
+                      //           duration: const Duration(milliseconds: 1900),
+                      //           child: MaterialButton(
+                      //             onPressed: () {},
+                      //             height: 50,
+                      //             shape: RoundedRectangleBorder(
+                      //               borderRadius: BorderRadius.circular(10),
+                      //             ),
+                      //             color: Colors.white,
+                      //             child: Row(
+                      //               mainAxisAlignment: MainAxisAlignment.center,
+                      //               children: <Widget>[
+                      //                 SvgPicture.asset(
+                      //                   "assets/google.svg",
+                      //                   width: 32,
+                      //                   height: 32,
+                      //                 ),
+                      //                 SizedBox(width: 10),
+                      //                 Text(AppStrings.GoogleLogin),
+                      //               ],
+                      //             ),
+                      //           )),
+                      //     ),
+                      //   ],
+                      // ),
+/*****************************************************************************************************************/
                     ],
                   ),
                 ),
