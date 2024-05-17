@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:trueque_tech/pages/favorite_page.dart';
-import 'package:trueque_tech/pages/publish_page.dart';
 import 'package:trueque_tech/themes/colors.dart';
 import 'package:trueque_tech/pages/profile_page.dart';
-import 'package:trueque_tech/pages/chat_page.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 class DashBoardPage extends StatefulWidget {
