@@ -5,11 +5,8 @@ import 'package:trueque_tech/pages/dash_board_page.dart';
 import 'package:trueque_tech/pages/login_page.dart';
 import 'package:trueque_tech/pages/login_pages/signUp_page.dart';
 import 'package:trueque_tech/preferences/pref_users.dart';
-import 'package:trueque_tech/pages/shop_list.dart';
-import 'package:trueque_tech/pages/favorite_page.dart';
-import 'package:trueque_tech/pages/profile_page.dart';
-import 'package:trueque_tech/pages/publish_page.dart';
 import 'package:trueque_tech/pages/chat_page.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,12 +32,8 @@ class MyApp extends StatelessWidget {
         LoginPage.routename: (context) => LoginPage(),
         SignUp.routename: (context) => SignUp(),
 
-        //Dashbiard pages
-        DashBoardPage.routename: (context) => const DashBoardPage(),
-        FavoritePage.routename: (context) => const FavoritePage(),
-        ProfilePage.routename: (context) => const ProfilePage(),
-        ShopList.routename: (context) => const ShopList(),
-        PublishPage.routename: (context) => const PublishPage(),
+        //Dashboard pages
+        DashboardPage.routename: (context) => DashboardPage(),
         ChatPage.routename: (context) => const ChatPage(),
       },
     );

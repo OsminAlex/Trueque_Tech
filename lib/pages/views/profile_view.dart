@@ -1,16 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:trueque_tech/pages/favorite_page.dart';
 import 'package:trueque_tech/pages/login_page.dart';
-import 'package:trueque_tech/pages/shop_list.dart';
 import 'package:trueque_tech/themes/colors.dart';
 import 'package:animate_do/animate_do.dart';
 
-class ProfilePage extends StatelessWidget {
-  static const String routename = 'Profile';
-
-  const ProfilePage({super.key});
-
+class ProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,15 +21,15 @@ class ProfilePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             SizedBox(height: 40),
-            Padding(
-              padding: const EdgeInsets.only(left: 20),
-              child: IconButton(
-                icon: Icon(Icons.arrow_back, color: Colors.white),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.only(left: 10),
+            //   child: IconButton(
+            //     icon: Icon(Icons.arrow_back, color: Colors.white),
+            //     onPressed: () {
+            //       Navigator.pop(context);
+            //     },
+            //   ),
+            // ),
             SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.all(10),
@@ -87,15 +81,15 @@ class ProfilePage extends StatelessWidget {
                       SizedBox(height: 40),
                       _buildIconButton(Icons.info, 'Información Personal'),
                       SizedBox(height: 20),
-                      _buildIconButton(Icons.favorite, 'Favoritos', onTap: () {
-                        Navigator.popAndPushNamed(
-                            context, FavoritePage.routename);
-                      }),
+                      _buildIconButton(
+                        Icons.favorite,
+                        'Favoritos',
+                      ),
                       SizedBox(height: 20),
-                      _buildIconButton(Icons.shopping_cart, 'Lista de Compras',
-                          onTap: () {
-                        Navigator.popAndPushNamed(context, ShopList.routename);
-                      }),
+                      _buildIconButton(
+                        Icons.shopping_cart,
+                        'Lista de Compras',
+                      ),
                       SizedBox(height: 20),
                       _buildIconButton(Icons.exit_to_app, 'Cerrar Sesión',
                           onTap: () async {

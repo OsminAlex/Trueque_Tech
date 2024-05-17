@@ -154,7 +154,7 @@ class SignUp extends StatelessWidget {
                                       break;
                                     case != null:
                                       Navigator.popAndPushNamed(
-                                          context, DashBoardPage.routename);
+                                          context, DashboardPage.routename);
                                     default:
                                   }
                                 } else {

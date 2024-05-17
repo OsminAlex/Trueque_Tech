@@ -1,75 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:trueque_tech/themes/colors.dart';
-import 'package:trueque_tech/pages/profile_page.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:get/get.dart';
+import 'package:trueque_tech/pages/bottom_navigation/bottom_navigation_viewmodel.dart';
+import 'bottom_navigation/custom_bottom_navigation_bar.dart';
+import 'bottom_navigation/global_variable.dart';
 
-class DashBoardPage extends StatefulWidget {
-  static const String routename = 'Dashboard';
-  const DashBoardPage({Key? key}) : super(key: key);
+class DashboardPage extends StatelessWidget {
+  DashboardPage({Key? key})
+      : super(key: key); // Corrección en la definición del constructor
+  final BottomNavigationViewModel viewModel =
+      Get.put(BottomNavigationViewModel());
 
-  @override
-  _DashBoardPageState createState() => _DashBoardPageState();
-}
-
-class _DashBoardPageState extends State<DashBoardPage> {
-  int _selectedIndex = 0;
+  static const String routename = 'Dashboard'; // Propiedad routename agregada
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: GNav(
-        selectedIndex: _selectedIndex,
-        onTabChange: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-          _navigateToPage(context, index);
-        },
-        backgroundColor: AppColors.sinDefinir04.withOpacity(0.2),
-        iconSize: 25,
-        gap: 8,
-        haptic: false,
-        padding: EdgeInsets.all(18),
-        tabs: [
-          GButton(
-            icon: Icons.home,
-            text: 'Home',
-          ),
-          GButton(
-            icon: Icons.favorite,
-            text: 'Favorite',
-          ),
-          GButton(
-            icon: Icons.add_box_outlined,
-            text: 'Publish',
-          ),
-          GButton(
-            icon: Icons.forum,
-            text: 'Chat',
-          ),
-          GButton(
-            icon: Icons.person,
-            text: 'Profile',
-          ),
-        ],
+    return SafeArea(
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        extendBody: true,
+        body: Obx(
+          () =>
+              viewModel.selectView(GlobalVariable.selectedIndex.value, context),
+        ),
+        bottomNavigationBar: CustomBottomNavigationBar(),
       ),
     );
-  }
-
-  void _navigateToPage(BuildContext context, int index) {
-    switch (index) {
-      /*case 1:
-        Navigator.pushNamed(context, FavoritePage.routename);
-        break;
-      case 2:
-        Navigator.pushNamed(context, PublishPage.routename);
-        break;
-      case 3:
-        Navigator.pushNamed(context, ChatPage.routename);
-        break;*/
-      case 4:
-        Navigator.pushNamed(context, ProfilePage.routename);
-        break;
-    }
   }
 }
