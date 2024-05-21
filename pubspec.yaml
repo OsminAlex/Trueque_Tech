@@ -44,6 +44,7 @@ dependencies:
   flutter_svg: ^2.0.10+1
   get: ^4.6.6
   flutter_screenutil: ^5.3.1
+  sizer: ^2.0.15
 
 dev_dependencies:
   #Cambiando package de la app

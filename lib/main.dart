@@ -6,7 +6,7 @@ import 'package:trueque_tech/pages/login_page.dart';
 import 'package:trueque_tech/pages/login_pages/signUp_page.dart';
 import 'package:trueque_tech/preferences/pref_users.dart';
 import 'package:trueque_tech/pages/chat_page.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+//import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,13 +20,13 @@ void main() async {
 class MyApp extends StatelessWidget {
   MyApp({super.key});
 
-  final prefs = PreferenciasUsuaios();
+  final String initialRoute = PreferenciasUsuaios().ultimapagina;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: prefs.ultimapagina,
+      initialRoute: initialRoute,
       routes: {
         //Paginas SignIn y SingUp, osea el login
         LoginPage.routename: (context) => LoginPage(),
