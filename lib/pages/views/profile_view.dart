@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:trueque_tech/pages/login_page.dart';
 import 'package:trueque_tech/themes/colors.dart';
 import 'package:animate_do/animate_do.dart';
@@ -90,6 +91,7 @@ class ProfileView extends StatelessWidget {
                       SizedBox(height: 20),
                       _buildIconButton(Icons.exit_to_app, 'Cerrar Sesión',
                           onTap: () async {
+                        await GoogleSignIn().signOut();
                         await FirebaseAuth.instance.signOut();
                         Navigator.popAndPushNamed(context, LoginPage.routename);
                       }),

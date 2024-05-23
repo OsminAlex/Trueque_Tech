@@ -1,4 +1,5 @@
 // ignore_for_file: use_build_context_synchronously
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:trueque_tech/pages/login_pages/signUp_page.dart';
@@ -225,7 +226,15 @@ class LoginPage extends StatelessWidget {
                             child: FadeInUp(
                                 duration: const Duration(milliseconds: 1900),
                                 child: MaterialButton(
-                                  onPressed: () {},
+                                  onPressed: () async {
+                                    User? user = await _auth.signInWithGoogle();
+                                    if (user != null) {
+                                      Navigator.popAndPushNamed(
+                                          context, DashboardPage.routename);
+                                    } else {
+                                      print("error en algo");
+                                    }
+                                  },
                                   height: 50,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10),
