@@ -29,4 +29,8 @@ class AppStrings {
   static const formNotNull =
       "Los campos de usuario y contraseña no pueden ser nulos";
   static const userOrEmailFail = "Usuario o contraseña incorrecto";
+
+  //Dashboard page
+
+  static const searchbarHint = "Buscar";
 }
