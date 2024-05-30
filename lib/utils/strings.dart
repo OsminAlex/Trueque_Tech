@@ -31,6 +31,7 @@ class AppStrings {
   static const userOrEmailFail = "Usuario o contraseña incorrecto";
 
   //Dashboard page
-
   static const searchbarHint = "Buscar";
+
+  static const dashboardNews = "Sugerencias de hoy";
 }

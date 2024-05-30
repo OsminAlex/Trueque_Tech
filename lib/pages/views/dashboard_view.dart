@@ -16,16 +16,6 @@ class DashboardView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Text(
-                  //   "Hola, bienvenido",
-                  //   style: TextStyle(
-                  //       color: AppColors.BotonesApp,
-                  //       fontSize: 12.sp,
-                  //       fontWeight: FontWeight.bold),
-                  // ),
-                  // SizedBox(
-                  //   height: 5.h,
-                  // ),
                   TextField(
                     style: TextStyle(color: AppColors.BotonesApp),
                     decoration: InputDecoration(
@@ -42,6 +32,38 @@ class DashboardView extends StatelessWidget {
                         prefixIcon: Icon(Icons.search),
                         prefixIconColor: AppColors.BotonesApp),
                   ),
+                  SizedBox(
+                    height: 3.h,
+                  ),
+                  Text(
+                    AppStrings.dashboardNews,
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 3.h,
+                  ),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: Column(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.all(10),
+                          height: 100,
+                          width: 300,
+                          padding: EdgeInsets.all(20),
+                          decoration: BoxDecoration(
+                              color: Colors.deepPurple.shade400,
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Center(
+                            child: Text("Subs"),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
                 ],
               ),
             ));
