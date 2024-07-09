@@ -7,7 +7,7 @@ class FavoriteView extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('FavoriteView', style: TextStyle(fontSize: 24)),
+          Text('SearchView', style: TextStyle(fontSize: 24)),
           SizedBox(height: 20),
         ],
       ),

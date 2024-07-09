@@ -24,8 +24,8 @@ class CustomGNavBar extends StatelessWidget {
               text: 'Home',
             ),
             GButton(
-              icon: Icons.favorite_outline,
-              text: 'Favorite',
+              icon: Icons.search,
+              text: 'Search',
             ),
             GButton(
               icon: Icons.add_box_outlined,
