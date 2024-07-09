@@ -12,7 +12,7 @@ import 'package:flutter/foundation.dart'
 /// // ...
 /// await Firebase.initializeApp(
 ///   options: DefaultFirebaseOptions.currentPlatform,
-/// );
+///
 /// ```
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
@@ -83,5 +83,4 @@ class DefaultFirebaseOptions {
     authDomain: 'trueque-tech.firebaseapp.com',
     storageBucket: 'trueque-tech.appspot.com',
   );
-
 }
