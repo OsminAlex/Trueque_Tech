@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:trueque_tech/pages/views/search_viewmodel.dart';
 import 'package:trueque_tech/themes/colors.dart';
 import 'package:get/get.dart';
 import 'package:trueque_tech/utils/strings.dart';

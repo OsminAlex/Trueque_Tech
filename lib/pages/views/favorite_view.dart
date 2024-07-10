@@ -3,6 +3,7 @@ import 'package:trueque_tech/pages/views/search_viewmodel.dart';
 import 'package:trueque_tech/themes/colors.dart';
 import 'package:get/get.dart';
 import 'package:trueque_tech/utils/strings.dart';
+import 'package:trueque_tech/utils/CustomTextButton.dart';
 
 class FavoriteView extends StatelessWidget {
   FavoriteView({super.key});
@@ -25,6 +26,8 @@ class FavoriteView extends StatelessWidget {
                         children: [
                           recentSearches(),
                           recentsearchResultListView(),
+                          advanceSearchBtn(context),
+                          popularCarListView(),
                         ],
                       ),
                     ),
@@ -55,10 +58,8 @@ class FavoriteView extends StatelessWidget {
               Icons.search_rounded,
               color: AppColors.BotonesApp,
             ),
-            hintText:
-                AppStrings.searchbarHint, // Usamos AppStrings.searchbarHint
-            contentPadding: EdgeInsets.symmetric(
-                vertical: 12, horizontal: 10), // Ajustamos el padding
+            hintText: AppStrings.searchbarHint,
+            contentPadding: EdgeInsets.symmetric(vertical: 12, horizontal: 10),
             hintStyle: TextStyle(
               color: AppColors.BotonesApp.withOpacity(0.3),
               fontSize: 14,
@@ -67,13 +68,11 @@ class FavoriteView extends StatelessWidget {
             filled: true,
             fillColor: Colors.grey[50],
             border: OutlineInputBorder(
-              borderSide: BorderSide.none, // Quitamos el borde
-              borderRadius:
-                  BorderRadius.circular(5.0), // Ajustamos el radio del borde
+              borderSide: BorderSide.none,
+              borderRadius: BorderRadius.circular(5.0),
             ),
           ),
-          style: TextStyle(
-              color: AppColors.BotonesApp), // Ajustamos el color del texto
+          style: TextStyle(color: AppColors.BotonesApp),
         ),
       ),
     );
@@ -104,7 +103,7 @@ class FavoriteView extends StatelessWidget {
         return recentsearchesListViewItem(index);
       },
       separatorBuilder: (context, index) {
-        return Divider(
+        return SizedBox(
           height: 3,
         );
       },
@@ -130,7 +129,7 @@ class FavoriteView extends StatelessWidget {
                           TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
                     ),
                     Text(
-                      'All Cities, All Types, All Prices',
+                      'Lugares de Venta, Precios, Generacion',
                       style: TextStyle(fontSize: 11, color: AppColors.color3),
                     ),
                   ],
@@ -170,7 +169,7 @@ class FavoriteView extends StatelessWidget {
         child: Row(
           children: [
             Text(
-              'Recent Search',
+              'Busqueda Reciente',
               style: TextStyle(fontWeight: FontWeight.w500),
             ),
             Spacer(),
@@ -179,7 +178,7 @@ class FavoriteView extends StatelessWidget {
               child: Row(
                 children: [
                   Text(
-                    'View All',
+                    'Ver Todos',
                     style: TextStyle(
                         fontWeight: FontWeight.w500,
                         color: AppColors.BotonesApp,
@@ -194,19 +193,115 @@ class FavoriteView extends StatelessWidget {
         ));
   }
 
-  /*Widget advanceSearchBtn() {
+  Widget advanceSearchBtn(BuildContext context) {
     return Center(
       child: CustomTextButton(
-        width: double.minPositive,
-        foregroundColor: AppColors.BotonesApp,
-        onPressed: (){},
-        child: Text(
-          'Advance Search',
-          style: TextStyle( 
-            col
-          ),
-        )
-      )
+        key: Key('advanceSearchButton'),
+        onPressed: () {
+          filterBottomSheet(context);
+        },
+        textColor: AppColors.BotonesApp,
+        fontSize: 13,
+        fontWeight: FontWeight.w500,
+        text: 'Busqueda Avanzada',
+      ),
     );
-  }*/
+  }
+
+  Widget popularCarListView() {
+    return ListView.separated(
+        padding: EdgeInsets.only(bottom: 100),
+        physics: NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        itemBuilder: (context, index) {
+          return popularCarListViewItem(index);
+        },
+        separatorBuilder: (context, index) {
+          return SizedBox(
+            height: 3,
+          );
+        },
+        itemCount: 7);
+  }
+
+  Widget popularCarListViewItem(int index) {
+    return Material(
+      child: InkWell(
+        onTap: () {},
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 15),
+          child: Row(
+            children: [
+              Expanded(
+                child: Text(
+                  'AirPods Pro',
+                  style: TextStyle(color: Colors.grey, fontSize: 11.5),
+                ),
+              ),
+              Icon(Icons.arrow_forward_ios, size: 13),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  void filterBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(45))),
+      builder: (context) {
+        return Stack(
+          alignment: Alignment.topRight,
+          children: [
+            SingleChildScrollView(
+              child: Padding(
+                padding:
+                    EdgeInsets.only(left: 16, right: 16, top: 20, bottom: 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Center(
+                      child: Text(
+                        'Filtro Avanzado',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 18,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 5),
+                    filterHeading('Categorias'),
+                    filterHeading('Precios'),
+                    filterHeading('Generacion'),
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(10),
+              child: IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Icon(Icons.close),
+              ),
+            )
+          ],
+        );
+      },
+    );
+  }
+
+  Widget filterHeading(String value) {
+    return Container(
+      padding: EdgeInsets.only(left: 5, bottom: 5, top: 10),
+      alignment: Alignment.topLeft,
+      child: Text(
+        value,
+        style: TextStyle(fontWeight: FontWeight.w600),
+      ),
+    );
+  }
 }
