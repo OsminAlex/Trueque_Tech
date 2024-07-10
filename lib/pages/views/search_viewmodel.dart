@@ -11,7 +11,14 @@ class SearchViewModel extends GetxController {
     'Electronica',
     'Computo',
     'Vehiculos',
-    'Herramientas'
+    'Herramientas',
+  ];
+  List<String> chipList1 = [
+    'Tamaño',
+    'Año',
+    'Estilos',
+    'Version',
+    'Colores',
   ];
 
   @override

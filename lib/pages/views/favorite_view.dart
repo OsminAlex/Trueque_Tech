@@ -3,6 +3,7 @@ import 'package:trueque_tech/pages/views/custom_chips.dart';
 import 'package:trueque_tech/pages/views/search_viewmodel.dart';
 import 'package:trueque_tech/themes/colors.dart';
 import 'package:get/get.dart';
+import 'package:trueque_tech/utils/custom_elevated_button.dart';
 import 'package:trueque_tech/utils/strings.dart';
 import 'package:trueque_tech/utils/CustomTextButton.dart';
 
@@ -116,28 +117,36 @@ class FavoriteView extends StatelessWidget {
     return Material(
       child: InkWell(
         onTap: () {},
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 15),
-          child: Row(
-            children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'AirPods Pro',
-                      style:
-                          TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
-                    ),
-                    Text(
-                      'Lugares de Venta, Precios, Generacion',
-                      style: TextStyle(fontSize: 11, color: AppColors.color3),
-                    ),
-                  ],
+        child: Container(
+          color: Color.fromRGBO(235, 235, 235, 1),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 15),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'AirPods Pro',
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      Text(
+                        'Lugares de Venta, Precios, Generacion',
+                        style: TextStyle(
+                          fontSize: 11,
+                          color: AppColors.color3,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              Icon(Icons.arrow_forward_ios, size: 13),
-            ],
+                Icon(Icons.arrow_forward_ios, size: 13),
+              ],
+            ),
           ),
         ),
       ),
@@ -229,18 +238,21 @@ class FavoriteView extends StatelessWidget {
     return Material(
       child: InkWell(
         onTap: () {},
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 15),
-          child: Row(
-            children: [
-              Expanded(
-                child: Text(
-                  'AirPods Pro',
-                  style: TextStyle(color: Colors.grey, fontSize: 11.5),
+        child: Container(
+          color: Color.fromRGBO(235, 235, 235, 1), // Gris más claro
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 15),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    'AirPods Pro',
+                    style: TextStyle(color: Colors.grey, fontSize: 11.5),
+                  ),
                 ),
-              ),
-              Icon(Icons.arrow_forward_ios, size: 13),
-            ],
+                Icon(Icons.arrow_forward_ios, size: 13),
+              ],
+            ),
           ),
         ),
       ),
@@ -272,8 +284,12 @@ class FavoriteView extends StatelessWidget {
                       ),
                       SizedBox(height: 5),
                       filterHeading('Categorias'),
+                      categoryChip(),
                       filterHeading('Precios'),
-                      filterHeading('Modelo'),
+                      priceSlider(),
+                      filterHeading('Modelo del Producto'),
+                      categoryChip1(),
+                      filterButtons()
                     ],
                   ),
                 ),
@@ -313,6 +329,84 @@ class FavoriteView extends StatelessWidget {
                     onSelected: (value) {},
                   ))
               .toList()),
+    );
+  }
+
+  Widget categoryChip1() {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 5),
+      child: Wrap(
+          children: viewModel.chipList1
+              .map((e) => CustomChip(
+                    selected: false,
+                    label: e,
+                    onSelected: (value) {},
+                  ))
+              .toList()),
+    );
+  }
+
+  Widget priceSlider() {
+    return Padding(
+      padding: EdgeInsets.only(left: 5, bottom: 25, top: 16, right: 5),
+      child: SliderTheme(
+        data: SliderThemeData(
+          showValueIndicator: ShowValueIndicator.always,
+          trackHeight: 1.5,
+        ),
+        child: RangeSlider(
+          labels: RangeLabels(
+            "1200",
+            "1500",
+          ),
+          min: 0.0,
+          max: 100.0,
+          activeColor: AppColors.BotonesApp,
+          inactiveColor: Colors.grey,
+          values: RangeValues(20, 80),
+          onChanged: (value) {},
+        ),
+      ),
+    );
+  }
+
+  Widget filterButtons() {
+    return Row(
+      children: [
+        Expanded(
+          flex: 1,
+          child: CustomElevatedButton(
+            onPressed: () {},
+            sideColor:
+                AppColors.BotonesApp, // Define el color del borde lateral aquí
+            backgroundColor: Colors.white,
+            child: Text(
+              'Borrar',
+              style: TextStyle(
+                fontSize: 16,
+                color: AppColors.BotonesApp,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+        ),
+        SizedBox(width: 15),
+        Expanded(
+          flex: 2,
+          child: CustomElevatedButton(
+            onPressed: () {},
+            backgroundColor: AppColors.BotonesApp,
+            child: Text(
+              'Aplicar Filtro',
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.white,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

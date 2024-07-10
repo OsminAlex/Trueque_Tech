@@ -1,60 +1,62 @@
 import 'package:flutter/material.dart';
 import 'package:trueque_tech/themes/colors.dart';
-import 'package:get/get.dart';
+import 'package:trueque_tech/utils/CustomTextButton.dart';
 import 'package:trueque_tech/utils/strings.dart';
 
 class DashboardView extends StatelessWidget {
   DashboardView({super.key});
 
-  //final SearchViewModel viewModel = Get.put(SearchViewModel());
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: Column(
         children: [
           searchTextField(),
-          /*Obx(
-            () => Expanded(
-              child: viewModel.searchCheck.value
-                  ? searchResultListView()
-                  : SingleChildScrollView(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [],
-                      ),
-                    ),
-            ),
-          )*/
         ],
+      ),
+    );
+  }
+
+  AppBar appBar() {
+    return AppBar(
+      primary: false,
+      backgroundColor: Colors.white,
+      automaticallyImplyLeading: false,
+      titleSpacing: 0,
+      leadingWidth: 0,
+      title: Padding(
+        padding: EdgeInsets.only(left: 10),
+        child: Row(
+          children: [
+            CustomTextButton(
+              child: Text(
+                'Producto Usado',
+                style: TextStyle(),
+              ),
+              onPressed: () {
+                // Acción al presionar el botón 'Producto Usado'
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
 
   Widget searchTextField() {
     return Padding(
-      padding: EdgeInsets.symmetric(
-          horizontal: 16, vertical: 12), // Ajustamos el padding vertical
+      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       child: SizedBox(
-        height: 48, // Establecemos la altura deseada
+        height: 48,
         child: TextFormField(
-          //controller: viewModel.searchController,
-          /*onChanged: (value) {
-            if (value.isEmpty) {
-              viewModel.searchCheck.value = false;
-            } else {
-              viewModel.searchCheck.value = true;
-            }
-          },*/
           decoration: InputDecoration(
             prefixIcon: Icon(
               Icons.search_rounded,
               color: AppColors.BotonesApp,
             ),
-            hintText:
-                AppStrings.searchbarHint, // Usamos AppStrings.searchbarHint
-            contentPadding: EdgeInsets.symmetric(
-                vertical: 12, horizontal: 10), // Ajustamos el padding
+            hintText: AppStrings.searchbarHint,
+            contentPadding: EdgeInsets.symmetric(vertical: 12, horizontal: 10),
             hintStyle: TextStyle(
               color: AppColors.BotonesApp.withOpacity(0.3),
               fontSize: 14,
@@ -63,51 +65,13 @@ class DashboardView extends StatelessWidget {
             filled: true,
             fillColor: Colors.grey[50],
             border: OutlineInputBorder(
-              borderSide: BorderSide.none, // Quitamos el borde
-              borderRadius:
-                  BorderRadius.circular(5.0), // Ajustamos el radio del borde
+              borderSide: BorderSide.none,
+              borderRadius: BorderRadius.circular(5.0),
             ),
           ),
-          style: TextStyle(
-              color: AppColors.BotonesApp), // Ajustamos el color del texto
+          style: TextStyle(color: AppColors.BotonesApp),
         ),
       ),
     );
   }
-
-  /*Widget searchResultListView() {
-    return ListView.separated(
-      padding: EdgeInsets.only(bottom: 100, top: 10),
-      itemBuilder: (context, index) {
-        return searchListViewItem(index);
-      },
-      separatorBuilder: (context, index) {
-        return Divider(
-          height: 0,
-          color: Colors.grey.shade200,
-        );
-      },
-      itemCount: 10,
-    );
-  }*/
-
-  /*Widget searchListViewItem(int index) {
-    return InkWell(
-      onTap: () {},
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 15),
-        child: Row(
-          children: [
-            Expanded(
-              child: Text(
-                'AirPods Pro',
-                style: TextStyle(color: Colors.grey, fontSize: 11.5),
-              ),
-            ),
-            Icon(Icons.arrow_forward_ios, size: 9),
-          ],
-        ),
-      ),
-    );
-  }*/
 }
