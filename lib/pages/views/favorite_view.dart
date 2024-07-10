@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trueque_tech/pages/views/custom_chips.dart';
 import 'package:trueque_tech/pages/views/search_viewmodel.dart';
 import 'package:trueque_tech/themes/colors.dart';
 import 'package:get/get.dart';
@@ -246,62 +247,72 @@ class FavoriteView extends StatelessWidget {
     );
   }
 
-  void filterBottomSheet(BuildContext context) {
+  filterBottomSheet(BuildContext context) {
     showModalBottomSheet(
-      context: context,
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(45))),
-      builder: (context) {
-        return Stack(
-          alignment: Alignment.topRight,
-          children: [
-            SingleChildScrollView(
-              child: Padding(
-                padding:
-                    EdgeInsets.only(left: 16, right: 16, top: 20, bottom: 10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Center(
-                      child: Text(
-                        'Filtro Avanzado',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 18,
+        context: context,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(45))),
+        builder: (context) {
+          return Stack(
+            alignment: Alignment.topRight,
+            children: [
+              SingleChildScrollView(
+                child: Padding(
+                  padding:
+                      EdgeInsets.only(left: 16, right: 16, top: 20, bottom: 10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Center(
+                        child: Text(
+                          'Filtro Avanzado',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w500, fontSize: 18),
                         ),
                       ),
-                    ),
-                    SizedBox(height: 5),
-                    filterHeading('Categorias'),
-                    filterHeading('Precios'),
-                    filterHeading('Generacion'),
-                  ],
+                      SizedBox(height: 5),
+                      filterHeading('Categorias'),
+                      filterHeading('Precios'),
+                      filterHeading('Modelo'),
+                    ],
+                  ),
                 ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.all(10),
-              child: IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: Icon(Icons.close),
-              ),
-            )
-          ],
-        );
-      },
-    );
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: Icon(Icons.close),
+                ),
+              )
+            ],
+          );
+        });
   }
 
   Widget filterHeading(String value) {
     return Container(
-      padding: EdgeInsets.only(left: 5, bottom: 5, top: 10),
-      alignment: Alignment.topLeft,
-      child: Text(
-        value,
-        style: TextStyle(fontWeight: FontWeight.w600),
-      ),
+        padding: EdgeInsets.only(left: 5, bottom: 5, top: 10),
+        alignment: Alignment.topLeft,
+        child: Text(
+          value,
+          style: TextStyle(fontWeight: FontWeight.w600),
+        ));
+  }
+
+  Widget categoryChip() {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 5),
+      child: Wrap(
+          children: viewModel.chipList
+              .map((e) => CustomChip(
+                    selected: false,
+                    label: e,
+                    onSelected: (value) {},
+                  ))
+              .toList()),
     );
   }
 }

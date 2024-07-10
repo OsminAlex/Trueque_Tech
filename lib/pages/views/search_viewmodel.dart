@@ -6,13 +6,12 @@ import 'package:get/get.dart';
 class SearchViewModel extends GetxController {
   RxBool searchCheck = false.obs;
   TextEditingController searchController = TextEditingController();
-  List<String> earphoneList = [
-    'Airpods Pro',
-    'Airpods Max',
-    'Airpods 2',
-    'Galaxy Buds2 Pro',
-    'Galaxy BudsLive',
-    'Galaxy Buds+'
+  List<String> chipList = [
+    'Ropa',
+    'Electronica',
+    'Computo',
+    'Vehiculos',
+    'Herramientas'
   ];
 
   @override
