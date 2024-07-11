@@ -16,6 +16,7 @@ class CustomGNavBar extends StatelessWidget {
           color: Colors.black,
           activeColor: AppColors.sinDefinir04.withOpacity(0.9),
           iconSize: 26,
+          backgroundColor: Colors.white,
           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
           tabBackgroundColor: AppColors.sinDefinir04.withOpacity(0.2),
           tabs: const [

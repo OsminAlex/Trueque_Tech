@@ -231,7 +231,7 @@ class FavoriteView extends StatelessWidget {
             height: 3,
           );
         },
-        itemCount: 7);
+        itemCount: 10);
   }
 
   Widget popularCarListViewItem(int index) {
@@ -239,7 +239,7 @@ class FavoriteView extends StatelessWidget {
       child: InkWell(
         onTap: () {},
         child: Container(
-          color: Color.fromRGBO(235, 235, 235, 1), // Gris más claro
+          color: Color.fromRGBO(235, 235, 235, 1),
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 15),
             child: Row(
