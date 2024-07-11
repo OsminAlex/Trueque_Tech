@@ -26,19 +26,15 @@ class CustomGNavBar extends StatelessWidget {
             ),
             GButton(
               icon: Icons.search,
-              text: 'Search',
-            ),
-            GButton(
-              icon: Icons.add_box_outlined,
-              text: 'Publish',
+              text: 'Buscar',
             ),
             GButton(
               icon: Icons.chat_outlined,
-              text: 'Message',
+              text: 'Mensajes',
             ),
             GButton(
               icon: Icons.person_2_outlined,
-              text: 'Profile',
+              text: 'Perfil',
             ),
           ],
         ));
