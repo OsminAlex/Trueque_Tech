@@ -1,9 +1,6 @@
-import 'dart:math';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:trueque_tech/themes/colors.dart';
 import 'package:trueque_tech/utils/CustomTextButton1.dart';
 
 class NotificationView extends StatelessWidget {
