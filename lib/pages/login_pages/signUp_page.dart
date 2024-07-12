@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:trueque_tech/themes/colors.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -131,54 +132,59 @@ class SignUp extends StatelessWidget {
                       const SizedBox(
                         height: 40,
                       ),
-                      FadeInUp(
-                          duration: const Duration(milliseconds: 1600),
-                          child: MaterialButton(
-                            onPressed: () async {
-                              _formKey.currentState?.save();
-                              if (_formKey.currentState?.validate() == true) {
-                                final v = _formKey.currentState?.value;
-                                if (v?['user'] != null && v?['pass'] != null) {
-                                  var result = await _auth.createAcount(
-                                      v?['user'], v?['pass']);
+                      SizedBox(
+                        width: 200,
+                        child: FadeInUp(
+                            duration: const Duration(milliseconds: 1600),
+                            child: MaterialButton(
+                              onPressed: () async {
+                                _formKey.currentState?.save();
+                                if (_formKey.currentState?.validate() == true) {
+                                  final v = _formKey.currentState?.value;
+                                  if (v?['user'] != null &&
+                                      v?['pass'] != null) {
+                                    var result = await _auth.createAcount(
+                                        v?['user'], v?['pass']);
 
-                                  //Una pequeña validacion
-                                  switch (result) {
-                                    case 1:
-                                      showSnackBar(
-                                          context, AppStrings.passwordToWeak);
-                                      break;
-                                    case 2:
-                                      showSnackBar(context,
-                                          AppStrings.emailAlreadyInUse);
-                                      break;
-                                    case != null:
-                                      Navigator.popAndPushNamed(
-                                          context, DashboardPage.routename);
-                                    default:
+                                    //Una pequeña validacion
+                                    switch (result) {
+                                      case 1:
+                                        showSnackBar(
+                                            context, AppStrings.passwordToWeak);
+                                        break;
+                                      case 2:
+                                        showSnackBar(context,
+                                            AppStrings.emailAlreadyInUse);
+                                        break;
+                                      case != null:
+                                        Navigator.popAndPushNamed(
+                                            context, DashboardPage.routename);
+                                      default:
+                                    }
+                                  } else {
+                                    showSnackBar(
+                                        context, AppStrings.formNotNull);
                                   }
-                                } else {
-                                  showSnackBar(context, AppStrings.formNotNull);
                                 }
-                              }
-                            },
-                            height: 50,
-                            //padding: EdgeInsets.symmetric(horizontal: 50),
-                            color: AppColors.BotonesApp,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(50),
-                            ),
-                            // decoration: BoxDecoration(
-                            // ),
-                            child: const Center(
-                              child: Text(
-                                AppStrings.btnLogin,
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold),
+                              },
+                              height: 50,
+                              //padding: EdgeInsets.symmetric(horizontal: 50),
+                              color: AppColors.BotonesApp,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50),
                               ),
-                            ),
-                          )),
+                              // decoration: BoxDecoration(
+                              // ),
+                              child: const Center(
+                                child: Text(
+                                  AppStrings.btnLogin,
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            )),
+                      ),
 
 /******************************************************************************************************/
 

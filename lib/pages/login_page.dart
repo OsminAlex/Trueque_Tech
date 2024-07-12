@@ -1,6 +1,8 @@
 // ignore_for_file: use_build_context_synchronously
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:trueque_tech/pages/login_pages/signUp_page.dart';
 import 'package:trueque_tech/themes/colors.dart';
@@ -126,61 +128,63 @@ class LoginPage extends StatelessWidget {
                       FadeInUp(
                           duration: const Duration(milliseconds: 1500),
                           child: const Text(
-                            "Forgot Password?",
+                            AppStrings.hintForgotPassword,
                             style: TextStyle(color: Colors.grey),
                           )),
                       const SizedBox(
                         height: 40,
                       ),
-                      FadeInUp(
-                          duration: const Duration(milliseconds: 1600),
-                          child: MaterialButton(
-                            onPressed: () async {
-                              _formKey.currentState?.save();
-                              if (_formKey.currentState?.validate() == true) {
-                                final v = _formKey.currentState?.value;
-                                if (v?['user'] != null && v?['pass'] != null) {
-                                  var result =
-                                      await _auth.singInEmailAnsPassword(
-                                          v?['user'], v?['pass']);
+                      SizedBox(
+                        width: 200,
+                        child: FadeInUp(
+                            duration: const Duration(milliseconds: 1600),
+                            child: MaterialButton(
+                              onPressed: () async {
+                                _formKey.currentState?.save();
+                                if (_formKey.currentState?.validate() == true) {
+                                  final v = _formKey.currentState?.value;
+                                  if (v?['user'] != null &&
+                                      v?['pass'] != null) {
+                                    var result =
+                                        await _auth.singInEmailAnsPassword(
+                                            v?['user'], v?['pass']);
 
-                                  //Una pequeña validacion
-                                  switch (result) {
-                                    case 1:
-                                      showSnackBar(
-                                          context, AppStrings.userOrEmailFail);
-                                      break;
-                                    case 2:
-                                      showSnackBar(
-                                          context, AppStrings.userOrEmailFail);
-                                      break;
-                                    case != null:
-                                      Navigator.popAndPushNamed(
-                                          context, DashboardPage.routename);
-                                    default:
+                                    //Una pequeña validacion
+                                    switch (result) {
+                                      case 1:
+                                        showSnackBar(context,
+                                            AppStrings.userOrEmailFail);
+                                        break;
+                                      case 2:
+                                        showSnackBar(context,
+                                            AppStrings.userOrEmailFail);
+                                        break;
+                                      case != null:
+                                        Navigator.popAndPushNamed(
+                                            context, DashboardPage.routename);
+                                      default:
+                                    }
+                                  } else {
+                                    showSnackBar(
+                                        context, AppStrings.formNotNull);
                                   }
-                                } else {
-                                  showSnackBar(context, AppStrings.formNotNull);
                                 }
-                              }
-                            },
-                            height: 50,
-                            //padding: EdgeInsets.symmetric(horizontal: 50),
-                            color: AppColors.BotonesApp,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(50),
-                            ),
-                            // decoration: BoxDecoration(
-                            // ),
-                            child: const Center(
-                              child: Text(
-                                AppStrings.btnLogin,
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold),
+                              },
+                              height: 50,
+                              color: AppColors.BotonesApp,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50),
                               ),
-                            ),
-                          )),
+                              child: const Center(
+                                child: Text(
+                                  AppStrings.btnLogin,
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            )),
+                      ),
                       const SizedBox(
                         height: 50,
                       ),
@@ -194,35 +198,10 @@ class LoginPage extends StatelessWidget {
                         height: 30,
                       ),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Expanded(
-                            child: FadeInUp(
-                                duration: const Duration(milliseconds: 1800),
-                                child: MaterialButton(
-                                  onPressed: () {},
-                                  height: 50,
-                                  color: Colors.white,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      SvgPicture.asset(
-                                        "assets/facebook.svg",
-                                        width: 32,
-                                        height: 32,
-                                      ),
-                                      SizedBox(width: 10),
-                                      Text(AppStrings.FacebookLogin),
-                                    ],
-                                  ),
-                                )),
-                          ),
-                          const SizedBox(
-                            width: 30,
-                          ),
-                          Expanded(
+                          SizedBox(
+                            width: 150,
                             child: FadeInUp(
                                 duration: const Duration(milliseconds: 1900),
                                 child: MaterialButton(

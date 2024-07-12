@@ -14,6 +14,7 @@ class AppStrings {
   static const hintEmail = "Indique su Email";
   static const hintPassword = "Contraseña";
 
+  static const hintForgotPassword = "¿Olvidaste tu contraseña?";
   static const btnLogin = "Entrar";
   static const loginMethods = "Otros metodos de inicio de sesión";
 
