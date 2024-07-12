@@ -16,6 +16,7 @@ class CustomGNavBar extends StatelessWidget {
           color: Colors.black,
           activeColor: AppColors.sinDefinir04.withOpacity(0.9),
           iconSize: 26,
+          backgroundColor: Colors.white,
           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
           tabBackgroundColor: AppColors.sinDefinir04.withOpacity(0.2),
           tabs: const [
@@ -24,20 +25,16 @@ class CustomGNavBar extends StatelessWidget {
               text: 'Home',
             ),
             GButton(
-              icon: Icons.favorite_outline,
-              text: 'Favorite',
-            ),
-            GButton(
-              icon: Icons.add_box_outlined,
-              text: 'Publish',
+              icon: Icons.search,
+              text: 'Buscar',
             ),
             GButton(
               icon: Icons.chat_outlined,
-              text: 'Message',
+              text: 'Mensajes',
             ),
             GButton(
               icon: Icons.person_2_outlined,
-              text: 'Profile',
+              text: 'Perfil',
             ),
           ],
         ));
